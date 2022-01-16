@@ -2,10 +2,11 @@ import express from "express";
 import mongoose from "mongoose";
 import articleRoute from "./routes/article.js";
 import commentRoute from "./routes/comment.js";
+import todolistRoute from "./routes/todolist.js";
 import cors from "cors";
 
 const app = express();
-const port = 3000;
+const port = 3001;
 // cluster mongodb
 const conn_str = "mongodb://db_api:User1234@cluster0-shard-00-00.0rzg1.mongodb.net:27017,cluster0-shard-00-01.0rzg1.mongodb.net:27017,cluster0-shard-00-02.0rzg1.mongodb.net:27017/db-api?replicaSet=atlas-kgpib2-shard-0&ssl=true&authSource=admin";
 
@@ -28,5 +29,6 @@ app.use(cors());
 app.use(express.json());
 app.use('/article', articleRoute);
 app.use('/comment', commentRoute);
+app.use('/todolist', todolistRoute);
 
 app.listen(port, () => console.log(`Server running at port : ${port}`));
