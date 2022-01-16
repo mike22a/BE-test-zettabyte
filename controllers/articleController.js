@@ -37,7 +37,7 @@ export const updateArticle = async (req,res) => {
     const cekId = await Article.findById(req.params.id);
     if(!cekId) return res.status(404).json({message: error.message});
     try{
-        const updatedArticle = await Article.updateOne({_id: req.params.id}, {$set: erq.body});
+        const updatedArticle = await Article.updateOne({_id: req.params.id}, {$set: req.body});
         res.status(200).json(updatedArticle);
     }catch (error){
         req.status(400).json({message: error.message});

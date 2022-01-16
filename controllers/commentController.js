@@ -30,7 +30,7 @@ export const updateComment = async (req,res) => {
     const cekId = await Comment.findById(req.params.id);
     if(!cekId) return res.status(404).json({message: error.message});
     try{
-        const updatedComment = await Comment.updateOne({_id: req.params.id}, {$set: erq.body});
+        const updatedComment = await Comment.updateOne({_id: req.params.id}, {$set: req.body});
         res.status(200).json(updatedComment);
     }catch (error){
         req.status(400).json({message: error.message});
